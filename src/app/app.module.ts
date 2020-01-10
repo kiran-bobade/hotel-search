@@ -1,17 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import {
   NgbModule, NgbRatingModule,
   NgbButtonsModule,
   NgbDatepickerModule,
   NgbPaginationModule,
-  NgbDateParserFormatter
+  NgbDateParserFormatter,
+  NgbTypeaheadModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCalendar, faMap } from '@fortawesome/free-regular-svg-icons';
-import { faMapMarker, faMapMarkedAlt, faMapMarkerAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MomentModule } from 'ngx-moment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,8 +42,10 @@ import { SearchPageComponent } from './search-page/search-page.component';
     NgbButtonsModule,
     NgbDatepickerModule,
     NgbPaginationModule,
+    NgbTypeaheadModule,
     FlexLayoutModule,
-    MomentModule
+    MomentModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: NgbDateParserFormatter, useClass: MomentDateFormatter }
@@ -51,7 +54,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 })
 export class AppModule {
 
-  constructor() {
-    library.add(faSearch, faCalendar, faMapMarker, faMapMarkerAlt, faMap);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+    // library.addIcons(faSearch, faCalendar, faMapMarker, faMapMarkerAlt, faMap);
   }
 }

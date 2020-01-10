@@ -1,5 +1,10 @@
-<div class="search-form" fxLayout="column" fxLayoutGap="25px">
+<div class="search-form" fxLayout="column" fxLayoutGap="20px">
   <form novalidate>
+    <!-- <section fxLayout="row" fxLayoutAlign="start start">
+      <button class="btn btn-sm btn-secondary" (click)="geolocate()">
+        <fa-icon [icon]="['fas', 'map-marker']"></fa-icon>
+        Search nearby</button>
+    </section> -->
     <section fxLayout="column">
       <label>Where are you going?</label>
       <div class="input-group mb-2">
@@ -10,7 +15,12 @@
         </div>
         <input type="text" class="form-control"
           id="inlineFormInputGroup"
-          placeholder="enter location">
+          placeholder="enter location"
+          name="searchTerm"
+          [(ngModel)]="searchTerm"
+          [ngbTypeahead]="searchLocation"
+          [resultFormatter]="resultFormatter"
+          [inputFormatter]="inputFormatter">
       </div>
     </section>
     <section fxLayout="row" fxLayoutGap="15px">
@@ -50,6 +60,9 @@
       </div>
       <div fxFlex="30">
         <label>Guests</label>
+        <div class="input-group mb-2">
+
+        </div>
       </div>
     </section>
     <br>
