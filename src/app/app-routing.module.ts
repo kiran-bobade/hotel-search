@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full' },
-  { path: '/result', component: SearchResultComponent },
-  { path: '**', redirectTo: '' }
+  { path: '', component: SearchPageComponent, pathMatch: 'full' },
+  { path: 'result', component: SearchResultComponent },
+  // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
