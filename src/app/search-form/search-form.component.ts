@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
 import { Observable } from 'rxjs';
@@ -9,7 +9,11 @@ import { isNullOrUndefined } from 'util';
 import { Constants } from '../utils/constants';
 import { SearchHistoryService } from '../services/search-history.service';
 import { Util } from '../utils/util';
-
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState
+} from '@angular/cdk/layout';
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
@@ -20,17 +24,33 @@ export class SearchFormComponent implements OnInit {
   public searchData: SearchData;
   public today = this.calendar.getToday();
   public searchTerm: any;
+  public minDate = {};
 
-  @Input() layout = 'column';
+  @Input() layout = 'column wrap';
   constructor(
     private readonly calendar: NgbCalendar,
+    private datePickerConfig: NgbDatepickerConfig,
     private readonly router: Router,
     private readonly locationService: LocationService,
-    private searchHistory: SearchHistoryService) {
+    private searchHistory: SearchHistoryService,
+    private breakpointObserver: BreakpointObserver) {
+    const current = new Date();
+    this.minDate = {
+      year: current.getFullYear(),
+      month: current.getMonth() + 1,
+      day: current.getDate()
+    };
   }
 
   public ngOnInit(): void {
     this.searchData = new SearchData();
+    this.breakpointObserver
+      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          console.log('viewport mode', state);
+        }
+      });
   }
 
   public searchHotels(): void {
@@ -79,6 +99,12 @@ export class SearchFormComponent implements OnInit {
 
   public isSelectedGuestCount(count: number): boolean {
     return this.searchData.guestCount === count;
+  }
+
+  public switchDates() {
+    const tempDate = this.searchData.checkOutDate;
+    this.searchData.checkOutDate = this.searchData.checkInDate;
+    this.searchData.checkInDate = tempDate;
   }
 
   public searchLocation = (searchText: Observable<string>) =>

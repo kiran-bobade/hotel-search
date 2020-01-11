@@ -7,7 +7,7 @@
         <div fxLayout="column" fxLayoutAlign="center center">
             <h6>Get back to an earlier search</h6>
         </div>
-        <div fxLayout="row wrap" fxLayoutAlign="space-evenly start">
+        <div fxLayout="row wrap" fxLayoutAlign="center">
             <div *ngFor="let search of recentSearches">
                 <app-recent-search-box [data]="search"></app-recent-search-box>
             </div>

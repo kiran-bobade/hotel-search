@@ -2,3 +2,12 @@ label.active {
   background-color: #ffc107 !important;
   border-color: #ffc107 !important;
 }
+
+input.ng-dirty.ng-invalid,
+input.invalid {
+  border: dotted 1px red;
+}
+
+.date-error {
+  color: rgb(250, 87, 87);
+}

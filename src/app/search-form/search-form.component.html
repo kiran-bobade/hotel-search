@@ -1,10 +1,9 @@
 <div class="search-form">
-  <form novalidate [fxLayout]="layout" fxLayoutGap="20px">
-    <!-- <section fxLayout="row" fxLayoutAlign="start start">
-      <button class="btn btn-sm btn-secondary" (click)="geolocate()">
-        <fa-icon [icon]="['fas', 'map-marker']"></fa-icon>
-        Search nearby</button>
-    </section> -->
+  <form novalidate #f="ngForm"
+    (ngSubmit)="f.form.valid && searchHotels()"
+    [mustHaveDiff]="['checkin','<','checkout']"
+    [fxLayout]="layout" fxLayoutGap="15px">
+
     <section fxLayout="column">
       <label>Where are you going?</label>
       <div class="input-group mb-2">
@@ -15,113 +14,134 @@
         </div>
         <input type="text" class="form-control"
           id="inlineFormInputGroup"
-          placeholder="enter location"
+          placeholder="enter destination"
           name="searchTerm"
           [(ngModel)]="searchTerm"
           [ngbTypeahead]="searchLocation"
           [resultFormatter]="resultFormatter"
           [inputFormatter]="inputFormatter"
-          (selectItem)="setSearchLocation($event)">
+          (selectItem)="setSearchLocation($event)"
+          #location="ngModel"
+          [ngClass]="{'invalid': f.submitted && location.invalid}"
+          required>
       </div>
     </section>
-    <div fxLayout="column">
-      <section fxLayout="row" fxLayoutGap="15px">
-        <div fxFlex="30">
-          <label>Check-in</label>
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text" (click)="ciDate.toggle()">
-                <fa-icon [icon]="['far', 'calendar']"></fa-icon>
-              </div>
-            </div>
-            <input type="text" class="form-control"
-              ngbDatepicker
-              [footerTemplate]="footerTemplate"
-              [(ngModel)]="searchData.checkInDate"
-              #ciDate="ngbDatepicker"
-              placeholder="check-in"
-              name="checkin">
-          </div>
-        </div>
-        <div fxFlex="30">
-          <label>Check-out</label>
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text" (click)="coDate.toggle()">
-                <fa-icon [icon]="['far', 'calendar']"></fa-icon>
-              </div>
-            </div>
-            <input type="text" class="form-control"
-              ngbDatepicker
-              [footerTemplate]="checkoutFooterTemplate"
-              [(ngModel)]="searchData.checkOutDate"
-              #coDate="ngbDatepicker"
-              placeholder="check-out"
-              name="checkout">
-          </div>
-        </div>
-        <div fxFlex="30">
-          <label>Guests</label>
-          <div class="input-group mb-2">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-light circular"
-                [ngClass]="{'active': isSelectedGuestCount(1)}"
-                (click)="setGuestCount(1)">
-                <input type="radio" name="options"
-                  id="count-1" autocomplete="off"
-                  checked> 1
-              </label>
-              <label class="btn btn-light"
-                [ngClass]="{'active': isSelectedGuestCount(2)}"
-                (click)="setGuestCount(2)">
-                <input type="radio" name="options"
-                  id="count-2"
-                  autocomplete="off">
-                2
-              </label>
-              <label class="btn btn-light"
-                [ngClass]="{'active': isSelectedGuestCount(3)}"
-                (click)="setGuestCount(3)">
-                <input type="radio" name="options"
-                  id="count-3"
-                  autocomplete="off">
-                3
-              </label>
-              <label class="btn btn-light circular"
-                [ngClass]="{'active': isSelectedGuestCount(4)}"
-                (click)="setGuestCount(4)">
-                <input type="radio" name="options"
-                  id="count-4"
-                  autocomplete="off">
-                3+
-              </label>
+    <section fxLayout="row wrap" fxLayoutGap="15px">
+      <div fxFlex="30">
+        <label>Check-in</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text" (click)="ciDate.toggle()">
+              <fa-icon [icon]="['far', 'calendar']"></fa-icon>
             </div>
           </div>
+          <input type="text" class="form-control"
+            ngbDatepicker
+            [minDate]="minDate"
+            [footerTemplate]="footerTemplate"
+            [(ngModel)]="searchData.checkInDate"
+            #ciDate="ngbDatepicker"
+            placeholder="check-in"
+            #cin="ngModel"
+            [ngClass]="{'invalid': f.submitted && cin.invalid}"
+            name="checkin" required>
         </div>
-      </section>
-    </div>
-    <section fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
-      <button class="btn btn-primary" (click)="searchHotels()">
-        <fa-icon [icon]="['fas', 'search']"></fa-icon>
-        Search hotels</button>
+      </div>
+      <div fxFlex="30">
+        <label>Check-out</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text" (click)="coDate.toggle()">
+              <fa-icon [icon]="['far', 'calendar']"></fa-icon>
+            </div>
+          </div>
+          <input type="text" class="form-control"
+            ngbDatepicker
+            [minDate]="minDate"
+            [footerTemplate]="checkoutFooterTemplate"
+            [(ngModel)]="searchData.checkOutDate"
+            #coDate="ngbDatepicker"
+            placeholder="check-out"
+            #cout="ngModel"
+            [ngClass]="{'invalid': f.submitted && cout.invalid}"
+            name="checkout" required>
+        </div>
+      </div>
+      <div fxFlex="30">
+        <label>Guests</label>
+        <div class="input-group mb-2">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-light circular"
+              [ngClass]="{'active': isSelectedGuestCount(1)}"
+              (click)="setGuestCount(1)">
+              <input type="radio" name="options"
+                id="count-1" autocomplete="off"
+                checked> 1
+            </label>
+            <label class="btn btn-light"
+              [ngClass]="{'active': isSelectedGuestCount(2)}"
+              (click)="setGuestCount(2)">
+              <input type="radio" name="options"
+                id="count-2"
+                autocomplete="off">
+              2
+            </label>
+            <label class="btn btn-light"
+              [ngClass]="{'active': isSelectedGuestCount(3)}"
+              (click)="setGuestCount(3)">
+              <input type="radio" name="options"
+                id="count-3"
+                autocomplete="off">
+              3
+            </label>
+            <label class="btn btn-light circular"
+              [ngClass]="{'active': isSelectedGuestCount(4)}"
+              (click)="setGuestCount(4)">
+              <input type="radio" name="options"
+                id="count-4"
+                autocomplete="off">
+              3+
+            </label>
+          </div>
+        </div>
+      </div>
     </section>
-  </form>
-</div>
+    <section fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
+      <ng-container *ngIf="layout === 'column'">
+        <div *ngIf="cin.errors && cin.errors.mustHaveDiff" class="date-error"
+          role="alert">
+          <span>Check-in date should be lower than Check-out date
+            <button class="btn btn-sm btn-link" (click)="switchDates()">><</button></span>
+          </div>
+        </ng-container>
+        <button class="btn btn-primary">
+          <fa-icon [icon]="['fas', 'search']"></fa-icon>
+          Search hotels</button>
+      </section>
+    </form>
+    <ng-container *ngIf="layout === 'row'">
+      <div *ngIf="cin.errors && cin.errors.mustHaveDiff" class="date-error"
+        role="alert">
+        <span>Check-in date should be lower than Check-out date
+          <button class="btn btn-sm btn-link" (click)="switchDates()">><</button></span>
+        </div>
+      </ng-container>
+    </div>
 
 
-<ng-template #footerTemplate>
-  <hr class="my-0">
-  <button class="btn btn-primary btn-sm m-2 float-left"
-    (click)="checkInDate=today; ciDate.close()">Today</button>
-  <button class="btn btn-secondary btn-sm m-2 float-right"
-    (click)="ciDate.close()">Close</button>
-</ng-template>
+    <ng-template #footerTemplate>
+      <hr class="my-0">
+      <button class="btn btn-primary btn-sm m-2 float-left"
+        (click)="checkInDate=today; ciDate.close()">Today</button>
+      <button class="btn btn-secondary btn-sm m-2 float-right"
+        (click)="ciDate.close()">Close</button>
+    </ng-template>
 
-<ng-template #checkoutFooterTemplate>
-  <hr class="my-0">
-  <button class="btn btn-primary btn-sm m-2 float-left"
-    (click)="checkInDate=today;
-    coDate.close()">Today</button>
-  <button class="btn btn-secondary btn-sm m-2 float-right"
-    (click)="coDate.close()">Close</button>
-</ng-template>
+    <ng-template #checkoutFooterTemplate>
+      <hr class="my-0">
+      <button class="btn btn-primary btn-sm m-2 float-left"
+        (click)="checkInDate=today;
+        coDate.close()">Today</button>
+      <button class="btn btn-secondary btn-sm m-2 float-right"
+        (click)="coDate.close()">Close</button>
+    </ng-template>

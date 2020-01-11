@@ -10,7 +10,7 @@ export class SearchData {
     constructor() {
         this.checkInDate = {};
         this.checkOutDate = {};
-        this.guestCount = 1;
+        this.guestCount = 2;
         this.uid = new Date().getUTCMilliseconds().toString();
     }
 }

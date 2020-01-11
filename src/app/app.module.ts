@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import {
   NgbModule, NgbRatingModule,
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { MomentDateFormatter } from './utils/date-formatter';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.component';
+import { MustHaveDiffDirective } from './utils/date-diff.directive';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,12 @@ import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.
     ListingItemComponent,
     SearchResultComponent,
     SearchPageComponent,
-    RecentSearchBoxComponent
+    RecentSearchBoxComponent,
+    MustHaveDiffDirective
   ],
   imports: [
     BrowserModule,
+    LayoutModule,
     FormsModule,
     AppRoutingModule,
     FontAwesomeModule,
@@ -55,9 +59,7 @@ import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far);
-    // library.addIcons(faSearch, faCalendar, faMapMarker, faMapMarkerAlt, faMap);
   }
 }
