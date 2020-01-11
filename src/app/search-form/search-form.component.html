@@ -1,5 +1,5 @@
-<div class="search-form" fxLayout="column" fxLayoutGap="20px">
-  <form novalidate>
+<div class="search-form">
+  <form novalidate [fxLayout]="layout" fxLayoutGap="20px">
     <!-- <section fxLayout="row" fxLayoutAlign="start start">
       <button class="btn btn-sm btn-secondary" (click)="geolocate()">
         <fa-icon [icon]="['fas', 'map-marker']"></fa-icon>
@@ -20,53 +20,87 @@
           [(ngModel)]="searchTerm"
           [ngbTypeahead]="searchLocation"
           [resultFormatter]="resultFormatter"
-          [inputFormatter]="inputFormatter">
+          [inputFormatter]="inputFormatter"
+          (selectItem)="setSearchLocation($event)">
       </div>
     </section>
-    <section fxLayout="row" fxLayoutGap="15px">
-      <div fxFlex="30">
-        <label>Check-in</label>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <div class="input-group-text" (click)="ciDate.toggle()">
-              <fa-icon [icon]="['far', 'calendar']"></fa-icon>
+    <div fxLayout="column">
+      <section fxLayout="row" fxLayoutGap="15px">
+        <div fxFlex="30">
+          <label>Check-in</label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" (click)="ciDate.toggle()">
+                <fa-icon [icon]="['far', 'calendar']"></fa-icon>
+              </div>
+            </div>
+            <input type="text" class="form-control"
+              ngbDatepicker
+              [footerTemplate]="footerTemplate"
+              [(ngModel)]="searchData.checkInDate"
+              #ciDate="ngbDatepicker"
+              placeholder="check-in"
+              name="checkin">
+          </div>
+        </div>
+        <div fxFlex="30">
+          <label>Check-out</label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" (click)="coDate.toggle()">
+                <fa-icon [icon]="['far', 'calendar']"></fa-icon>
+              </div>
+            </div>
+            <input type="text" class="form-control"
+              ngbDatepicker
+              [footerTemplate]="checkoutFooterTemplate"
+              [(ngModel)]="searchData.checkOutDate"
+              #coDate="ngbDatepicker"
+              placeholder="check-out"
+              name="checkout">
+          </div>
+        </div>
+        <div fxFlex="30">
+          <label>Guests</label>
+          <div class="input-group mb-2">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-light circular"
+                [ngClass]="{'active': isSelectedGuestCount(1)}"
+                (click)="setGuestCount(1)">
+                <input type="radio" name="options"
+                  id="count-1" autocomplete="off"
+                  checked> 1
+              </label>
+              <label class="btn btn-light"
+                [ngClass]="{'active': isSelectedGuestCount(2)}"
+                (click)="setGuestCount(2)">
+                <input type="radio" name="options"
+                  id="count-2"
+                  autocomplete="off">
+                2
+              </label>
+              <label class="btn btn-light"
+                [ngClass]="{'active': isSelectedGuestCount(3)}"
+                (click)="setGuestCount(3)">
+                <input type="radio" name="options"
+                  id="count-3"
+                  autocomplete="off">
+                3
+              </label>
+              <label class="btn btn-light circular"
+                [ngClass]="{'active': isSelectedGuestCount(4)}"
+                (click)="setGuestCount(4)">
+                <input type="radio" name="options"
+                  id="count-4"
+                  autocomplete="off">
+                3+
+              </label>
             </div>
           </div>
-          <input type="text" class="form-control"
-            ngbDatepicker
-            [footerTemplate]="footerTemplate"
-            [(ngModel)]="checkInDate"
-            #ciDate="ngbDatepicker"
-            placeholder="check-in"
-            name="checkin">
         </div>
-      </div>
-      <div fxFlex="30">
-        <label>Check-out</label>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <div class="input-group-text" (click)="coDate.toggle()">
-              <fa-icon [icon]="['far', 'calendar']"></fa-icon>
-            </div>
-          </div>
-          <input type="text" class="form-control"
-            ngbDatepicker
-            [footerTemplate]="checkoutFooterTemplate"
-            [(ngModel)]="checkOutDate"
-            #coDate="ngbDatepicker"
-            placeholder="check-out"
-            name="checkout">
-        </div>
-      </div>
-      <div fxFlex="30">
-        <label>Guests</label>
-        <div class="input-group mb-2">
-
-        </div>
-      </div>
-    </section>
-    <br>
-    <section>
+      </section>
+    </div>
+    <section fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
       <button class="btn btn-primary" (click)="searchHotels()">
         <fa-icon [icon]="['fas', 'search']"></fa-icon>
         Search hotels</button>
