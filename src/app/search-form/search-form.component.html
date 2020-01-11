@@ -112,15 +112,16 @@
 <ng-template #footerTemplate>
   <hr class="my-0">
   <button class="btn btn-primary btn-sm m-2 float-left"
-    (click)="checkInDate=today;
-    d.close()">Today</button>
-  <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+    (click)="checkInDate=today; ciDate.close()">Today</button>
+  <button class="btn btn-secondary btn-sm m-2 float-right"
+    (click)="ciDate.close()">Close</button>
 </ng-template>
 
 <ng-template #checkoutFooterTemplate>
   <hr class="my-0">
   <button class="btn btn-primary btn-sm m-2 float-left"
     (click)="checkInDate=today;
-    d.close()">Today</button>
-  <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+    coDate.close()">Today</button>
+  <button class="btn btn-secondary btn-sm m-2 float-right"
+    (click)="coDate.close()">Close</button>
 </ng-template>

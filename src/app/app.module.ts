@@ -23,6 +23,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { FormsModule } from '@angular/forms';
 import { MomentDateFormatter } from './utils/date-formatter';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
     SearchFormComponent,
     ListingItemComponent,
     SearchResultComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    RecentSearchBoxComponent
   ],
   imports: [
     BrowserModule,

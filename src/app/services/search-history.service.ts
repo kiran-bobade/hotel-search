@@ -2,13 +2,20 @@ import { Injectable } from '@angular/core';
 import { Constants } from '../utils/constants';
 import { isNullOrUndefined } from 'util';
 import { SearchData } from '../models/search-data';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchHistoryService {
 
+  private historySubject = new Subject<SearchData[]>();
+
   constructor() { }
+
+  public getHistoryObservable() {
+    return this.historySubject.asObservable();
+  }
 
   public getHistory(): SearchData[] {
     const recentSearches = localStorage.getItem(Constants.KEY_RECENT_SEARCH);
@@ -20,15 +27,18 @@ export class SearchHistoryService {
     if (this.isDuplicate(searchData)) { return; }
     const history = this.getHistory();
     history.push(searchData);
+    this.historySubject.next(history);
     localStorage.setItem(Constants.KEY_RECENT_SEARCH, JSON.stringify(history));
   }
 
   public delete(uid: string) {
-    let history = this.getHistory();
-    console.log('history before delete', history);
-    const foundIndex = history.findIndex(value => value.uid === uid);
-    history = history.splice(foundIndex, 1);
-    console.log('history after delete', history);
+    const history = this.getHistory();
+    const foundIndex = history.findIndex((value, index) => {
+      return value.uid === uid;
+    });
+    history.splice(foundIndex, 1);
+    this.historySubject.next(history);
+    localStorage.setItem(Constants.KEY_RECENT_SEARCH, JSON.stringify(history));
   }
 
   private isDuplicate(searchData: SearchData): boolean {

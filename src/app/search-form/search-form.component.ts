@@ -47,8 +47,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   public setSearchLocation(location: any): void {
-    console.log('loc', location);
-    this.searchData.location = location;
+    this.searchData.location = location.item;
   }
 
   public geolocate(): void {

@@ -1,0 +1,27 @@
+<div class="card box">
+    <div>
+        <fa-icon [icon]="['fas','map-marker']" [styles]="iconStyles"></fa-icon>
+        <span><strong>{{data.location.city}}</strong></span>
+    </div>
+    <div>
+        <fa-icon [icon]="['far','calendar']" [styles]="iconStyles"></fa-icon>
+        <span>{{data.checkInDate.day}}/{{data.checkInDate.month}}/{{data.checkInDate.year}}
+            -
+            {{data.checkOutDate.day}}/{{data.checkOutDate.month}}/{{data.checkOutDate.year}}
+        </span>
+    </div>
+    <div>
+        <fa-icon [icon]="['fas','users']" [styles]="iconStyles"></fa-icon>
+        <span>{{data.guestCount}} Guests</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <div class="btn-group">
+            <button class="btn btn-sm btn-light">
+                <fa-icon [icon]="['fas','search']" [styles]="iconStyles"></fa-icon>
+            </button>
+            <button class="btn btn-sm btn-light" (click)="removeHistory(data)">
+                <fa-icon [icon]="['fas','trash']" [styles]="iconStyles"></fa-icon>
+            </button>
+        </div>
+    </div>
+</div>

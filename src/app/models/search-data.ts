@@ -11,6 +11,6 @@ export class SearchData {
         this.checkInDate = {};
         this.checkOutDate = {};
         this.guestCount = 1;
-        this.uid = new Date().getUTCMilliseconds.toString();
+        this.uid = new Date().getUTCMilliseconds().toString();
     }
 }

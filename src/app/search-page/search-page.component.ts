@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchHistoryService } from '../services/search-history.service';
 
 @Component({
   selector: 'app-search-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  recentSearches: any[] = [];
+  constructor(private readonly historyService: SearchHistoryService) {
   }
 
+  public ngOnInit(): void {
+    this.recentSearches = this.historyService.getHistory();
+
+    this.historyService.getHistoryObservable().subscribe((history) => {
+      this.recentSearches = history;
+    });
+  }
 }
