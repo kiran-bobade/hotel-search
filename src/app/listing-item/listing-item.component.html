@@ -1,3 +1,48 @@
-<p>
-  listing-item works!
-</p>
+<div class="card listing-item" fxLayout="row wrap" fxLayoutAlign="start start"
+  fxLayoutGap="5px">
+  <div fxFlex.gt-sm="20" fxFlex.lt-sm="35" class="image-container">
+    <img class="img-fluid" src="https://picsum.photos/200" />
+  </div>
+  <div fxLayout.gt-sm="row wrap" fxLayout.lt-sm="column" fxFlex.lt-sm="60"
+    fxFlex.gt-xs="75">
+    <div class="info-container" fxLayout="column"
+      fxFlex="50" fxFlex.lt-sm="60" fxFlex.gt-sm="70"
+      fxLayoutGap="10px" fxLayoutGap.lt-sm="5px"
+      fxLayoutAlign="start start">
+      <app-rating [rating]="5" maxValue="5" symbol="&#9733;">
+        <small> Hotel</small>
+      </app-rating>
+      <div class="hotel-name">
+        <span>Mandrin Oriental, Las Vegas</span>
+      </div>
+      <div class="hotel-address">
+        <fa-icon [icon]="['fas', 'map-marker-alt']" [styles]="{'color':
+          'gray'}"></fa-icon>
+        <span>3752 Las Vegas Blvd S, Las Vegas </span>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="end start">
+        <app-rating [rating]="currentRate" symbol="&#9829;" color="red">
+          <span>
+            <small class="badge" [ngClass]="ratingBadge">{{currentRate}}</small>
+            <small>(300 reviews)</small>
+          </span>
+        </app-rating>
+      </div>
+    </div>
+    <div fxFlex="20" class="price-container" fxLayout="column"
+      fxLayout.lt-sm="row" fxLayoutAlign="space-around start" fxLayoutGap="5px">
+      <div fxFlex.gt-xs="20" fxFlex.lt-sm="50">
+        <span fxHide.lt-sm class="sup">from</span>
+        <span class="highlight">$370</span> <sub>/night</sub>
+        <span class="badge badge-light" fxHide.gt-sm>Total: $370</span>
+      </div>
+      <div fxFlex="10" fxHide.lt-sm>
+        <span class="badge badge-light badge-total">Total: $370</span>
+      </div>
+      <div fxFlex.gt-sm="10" fxFlex.lt-sm="50" fxFlexAlign="end"
+        fxFlexAlign.gt-md="start">
+        <button class="btn btn-sm btn-success"> Show rooms</button>
+      </div>
+    </div>
+  </div>
+</div>

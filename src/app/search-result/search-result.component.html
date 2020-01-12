@@ -2,12 +2,18 @@
   <app-search-form layout="'row wrap'">
   </app-search-form>
 </section>
-<section fxLayout="row">
-  <aside>
-    aside
-  </aside>
-  <section>
-    <app-listing-item></app-listing-item>
+<section fxLayout="row" style="margin-top: 20px;">
+  <aside fxFlex="20" fxHide.lt-md="">
+    <header><h6>Refine your search</h6></header>
+    <div>
 
+    </div>
+  </aside>
+  <section fxFlex="80" fxFlex.lt-md="100" class="search-result">
+    <app-listing-item></app-listing-item>
+    <app-listing-item></app-listing-item>
+    <app-listing-item></app-listing-item>
+    <app-listing-item></app-listing-item>
+    <app-listing-item></app-listing-item>
   </section>
 </section>

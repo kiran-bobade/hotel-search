@@ -26,6 +26,7 @@ import { MomentDateFormatter } from './utils/date-formatter';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.component';
 import { MustHaveDiffDirective } from './utils/date-diff.directive';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MustHaveDiffDirective } from './utils/date-diff.directive';
     SearchResultComponent,
     SearchPageComponent,
     RecentSearchBoxComponent,
-    MustHaveDiffDirective
+    MustHaveDiffDirective,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

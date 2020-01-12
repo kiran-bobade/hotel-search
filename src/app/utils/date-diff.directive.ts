@@ -11,8 +11,6 @@ export class MustHaveDiffDirective implements Validator {
     @Input() mustHaveDiff: string[] = [];
 
     validate(control: any): ValidationErrors {
-        console.log('control', control);
-
         const control1 = control.controls[this.mustHaveDiff[0]];
         const operator = this.mustHaveDiff[1];
         const control2 = control.controls[this.mustHaveDiff[2]];

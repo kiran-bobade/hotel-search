@@ -4,6 +4,17 @@
 
 aside {
   background: #fff;
-  height: 100vh;
-  width: 80px;
+  width: 100px;
+  min-height: 70vh;
+  padding: 10px 8px;
+
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.search-result {
+  padding: 0 10px;
 }

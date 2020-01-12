@@ -1,0 +1,201 @@
+{
+    "data": {
+        "total": 30,
+        "currentPage": 1,
+        "itemsPerPage": 10,
+        "hotels": [
+            {
+                "id": "",
+                "name": "Hotel Kohinoor Continental",
+                "accommodationType": "Hotel",
+                "locality": {
+                    "city": "Mumbai",
+                    "address": "Patel Complex, Opposite Johnson and Johnson, Safed Pool, Kurla - Andheri Road, 400072,"
+                },
+                "geocode": {
+                    "lng": 72.88486,
+                    "lat": 19.10189
+                },
+                "hasSpecialOffer": false,
+                "star": 5,
+                "rating": {
+                    "totalReviews": 300,
+                    "value": 3.5
+                },
+                "minPrice": {
+                    "displayPrice": "10,376",
+                    "price": 10376
+                },
+                "maxPrice": {
+                    "displayPrice": "22,000",
+                    "price": 22000
+                },
+                "highlights": [
+                    "wifi",
+                    "parking",
+                    "swimming pool",
+                    "free breakfast",
+                    "air conditioning",
+                    "television",
+                    "gym",
+                    "massage",
+                    "spa",
+                    "sauna"
+                ]
+            },
+            {
+                "id": "",
+                "name": "Sofitel Mumbai BKC",
+                "accommodationType": "Hotel",
+                "locality": {
+                    "city": "Mumbai",
+                    "address": "Opposite Johnson and Johnson, Safed Pool, Kurla,"
+                },
+                "geocode": {
+                    "lng": 72.86891,
+                    "lat": 19.06773
+                },
+                "hasSpecialOffer": false,
+                "star": 4,
+                "rating": {
+                    "totalReviews": 152,
+                    "value": 3.8
+                },
+                "minPrice": {
+                    "displayPrice": "8,499",
+                    "price": 8499
+                },
+                "maxPrice": {
+                    "displayPrice": "12,000",
+                    "price": 12000
+                },
+                "highlights": [
+                    "wifi",
+                    "parking",
+                    "swimming pool",
+                    "free breakfast",
+                    "air conditioning",
+                    "television",
+                    "spa",
+                    "sauna"
+                ]
+            },
+            {
+                "id": "3",
+                "name": "Courtyard by Marriott Pune Chakan",
+                "accommodationType": "Hotel",
+                "locality": {
+                    "city": "Pune",
+                    "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
+                },
+                "geocode": {
+                    "lng": 72.88486,
+                    "lat": 19.10189
+                },
+                "hasSpecialOffer": false,
+                "star": 5,
+                "rating": {
+                    "totalReviews": 975,
+                    "value": 4.6
+                },
+                "minPrice": {
+                    "displayPrice": "4,376",
+                    "price": 4376
+                },
+                "maxPrice": {
+                    "displayPrice": "19,700",
+                    "price": 19700
+                },
+                "highlights": [
+                    "wifi",
+                    "parking",
+                    "swimming pool",
+                    "free breakfast",
+                    "air conditioning",
+                    "television",
+                    "gym",
+                    "massage",
+                    "spa",
+                    "sauna"
+                ]
+            },
+            {
+                "id": "4",
+                "name": "Ramee Grand Pune",
+                "accommodationType": "Hotel",
+                "locality": {
+                    "city": "Pune",
+                    "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
+                },
+                "geocode": {
+                    "lng": 72.88486,
+                    "lat": 19.10189
+                },
+                "hasSpecialOffer": false,
+                "star": 5,
+                "rating": {
+                    "totalReviews": 751,
+                    "value": 3.1
+                },
+                "minPrice": {
+                    "displayPrice": "8,562",
+                    "price": 8562
+                },
+                "maxPrice": {
+                    "displayPrice": "13,999",
+                    "price": 13999
+                },
+                "highlights": [
+                    "wifi",
+                    "parking",
+                    "swimming pool",
+                    "free breakfast",
+                    "air conditioning",
+                    "television",
+                    "gym",
+                    "massage",
+                    "spa",
+                    "sauna"
+                ]
+            },
+            {
+                "id": "5",
+                "name": "Royalton",
+                "accommodationType": "Hotel",
+                "locality": {
+                    "city": "New York",
+                    "address": "44 West 44th Street, 10036, New York, USA"
+                },
+                "geocode": {
+                    "lng": 72.88486,
+                    "lat": 19.10189
+                },
+                "hasSpecialOffer": false,
+                "star": 7,
+                "rating": {
+                    "totalReviews": 1201,
+                    "value": 4.8
+                },
+                "minPrice": {
+                    "displayPrice": "12,606",
+                    "price": 12606
+                },
+                "maxPrice": {
+                    "displayPrice": "25399",
+                    "price": 25399
+                },
+                "highlights": [
+                    "wifi",
+                    "parking",
+                    "swimming pool",
+                    "free breakfast",
+                    "air conditioning",
+                    "television",
+                    "gym",
+                    "spa",
+                    "pets"
+                ]
+            }
+        ]
+    }
+}

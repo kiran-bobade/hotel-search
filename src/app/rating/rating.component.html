@@ -1,0 +1,9 @@
+<ngb-rating [(rate)]="rating" [starTemplate]="t" [readonly]="true"
+    [max]="maxValue"></ngb-rating>
+<ng-content></ng-content>
+<ng-template #t let-fill="fill">
+    <span class="star" [class.full]="fill === 100">
+        <span class="half" [style.width.%]="fill" [style.color]="color">{{symbol}}</span>
+        {{symbol}}
+    </span>
+</ng-template>
