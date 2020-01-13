@@ -3,7 +3,7 @@
         <app-search-form></app-search-form>
     </div>
 
-    <div class="card recent-searches">
+    <div class="card recent-searches" *ngIf="recentSearches.length> 0">
         <div fxLayout="column" fxLayoutAlign="center center">
             <h6>Get back to an earlier search</h6>
         </div>

@@ -5,7 +5,7 @@
 aside {
   background: #fff;
   width: 100px;
-  min-height: 70vh;
+  max-height: 70vh;
   padding: 10px 8px;
 
   word-wrap: break-word;
@@ -17,4 +17,9 @@ aside {
 
 .search-result {
   padding: 0 10px;
+}
+
+.no-data {
+  height: 70vh;
+  background: #fff;
 }

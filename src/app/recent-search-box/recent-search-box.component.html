@@ -1,27 +1,22 @@
-<div class="card box">
+<div class="card box" (click)="applySearch(data)">
     <div>
         <fa-icon [icon]="['fas','map-marker']" [styles]="iconStyles"></fa-icon>
         <span><strong>{{data.location.city}}</strong></span>
     </div>
     <div>
         <fa-icon [icon]="['far','calendar']" [styles]="iconStyles"></fa-icon>
-        <span>{{data.checkInDate.day}}/{{data.checkInDate.month}}/{{data.checkInDate.year}}
+        <span>
+            {{data.checkInDate | ngbDateFormatter}}
             -
-            {{data.checkOutDate.day}}/{{data.checkOutDate.month}}/{{data.checkOutDate.year}}
+            {{data.checkOutDate | ngbDateFormatter}}
         </span>
     </div>
     <div>
         <fa-icon [icon]="['fas','users']" [styles]="iconStyles"></fa-icon>
         <span>{{data.guestCount}} Guests</span>
     </div>
-    <div fxLayout="row" fxLayoutAlign="end end">
-        <div class="btn-group">
-            <button class="btn btn-sm btn-light" (click)="applySearch(data)">
-                <fa-icon [icon]="['fas','search']" [styles]="iconStyles"></fa-icon>
-            </button>
-            <button class="btn btn-sm btn-light" (click)="removeHistory(data)">
-                <fa-icon [icon]="['fas','trash']" [styles]="iconStyles"></fa-icon>
-            </button>
-        </div>
-    </div>
+    <button class="btn-remove btn btn-sm btn-light btn-link"
+        (click)="removeHistory(data)"> <strong>x</strong>
+        <!-- <fa-icon [icon]="['fas','']" [styles]="iconStyles"></fa-icon> -->
+    </button>
 </div>

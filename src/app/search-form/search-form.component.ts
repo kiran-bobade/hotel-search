@@ -19,12 +19,19 @@ import {
   providers: [LocationService]
 })
 export class SearchFormComponent implements OnInit {
+
+  @Input() layout = 'column wrap';
+
   public searchData: SearchData;
   public today = this.calendar.getToday();
   public searchTerm: any;
   public minDate = {};
+  public searchExpanded = true;
+  public summaryIconStyle = {
+    color: '#cdcdcd',
+  };
+  public isMobileView = false;
 
-  @Input() layout = 'column wrap';
   constructor(
     private readonly calendar: NgbCalendar,
     private readonly router: Router,
@@ -46,11 +53,9 @@ export class SearchFormComponent implements OnInit {
     this.parseQueryParams();
 
     this.breakpointObserver
-      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+      .observe([Breakpoints.XSmall])
       .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          console.log('viewport mode', state);
-        }
+        this.isMobileView = state.matches;
       });
   }
 
@@ -119,6 +124,10 @@ export class SearchFormComponent implements OnInit {
     const tempDate = this.searchData.checkOutDate;
     this.searchData.checkOutDate = this.searchData.checkInDate;
     this.searchData.checkInDate = tempDate;
+  }
+
+  public expandSearch() {
+    this.searchExpanded = !this.searchExpanded;
   }
 
   public searchLocation = (searchText: Observable<string>) =>

@@ -22,12 +22,13 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { ListingItemComponent } from './listing-item/listing-item.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FormsModule } from '@angular/forms';
-import { MomentDateFormatter } from './utils/date-formatter';
+import { MomentDateParser } from './utils/date-parser';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.component';
 import { MustHaveDiffDirective } from './utils/date-diff.directive';
 import { RatingComponent } from './rating/rating.component';
 import { ThousandSeparatorPipe } from './utils/thousand-separator.pipe';
+import { NgbDateFormatterPipe } from './utils/date-formatter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ThousandSeparatorPipe } from './utils/thousand-separator.pipe';
     RecentSearchBoxComponent,
     MustHaveDiffDirective,
     RatingComponent,
-    ThousandSeparatorPipe
+    ThousandSeparatorPipe,
+    NgbDateFormatterPipe
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { ThousandSeparatorPipe } from './utils/thousand-separator.pipe';
     HttpClientModule,
   ],
   providers: [
-    { provide: NgbDateParserFormatter, useClass: MomentDateFormatter }
+    { provide: NgbDateParserFormatter, useClass: MomentDateParser }
   ],
   bootstrap: [AppComponent]
 })

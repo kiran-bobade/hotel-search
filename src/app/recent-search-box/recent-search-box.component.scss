@@ -4,6 +4,8 @@
   border-radius: 0;
   margin: 0.5em;
   font-size: 14px;
+  position: relative;
+  cursor: pointer;
 
   div {
     padding: 2px;
@@ -20,4 +22,10 @@
 .color-gray {
   color: gray !important;
   stroke: gray !important;
+}
+
+.btn-remove {
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }

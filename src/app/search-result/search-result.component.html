@@ -6,25 +6,28 @@
   <aside fxFlex="20" fxHide.lt-md="">
     <header><h6>Refine your search</h6></header>
     <div>
-
     </div>
   </aside>
   <section fxFlex="80" fxFlex.lt-md="100" class="search-result">
-    <div *ngIf="!searchResult || !searchResult.hotels" fxFlexAlign="center"
+    <div class="no-data" *ngIf="searchResult.total === 0" fxFlexAlign="center"
       fxLayout="row" fxLayoutAlign="center center">
-      <span class="alert alert-info"> No hotels found</span>
+      <span class="alert text-secondary">
+        OOPS! ): Currently, we are not providing services around <strong>{{searchData.location.city}}
+          area</strong>
+      </span>
     </div>
-    <div *ngIf="searchResult && searchResult.hotels">
+    <div *ngIf="searchResult.total !== 0">
       <div fxLayout="row" fxLayoutAlign="space-between start">
         <div>
           <ngb-pagination [collectionSize]="searchResult.total"
             [pageSize]="page.size"
-            [(page)]="page.current" size="md"
+            [maxSize]="3"
+            [(page)]="page.current" size="sm"
             (pageChange)="search()" aria-label="Default pagination">
           </ngb-pagination>
         </div>
         <div>
-          Sort by
+          <span fxHide.lt-sm>Sort by </span>
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-sm btn-outline-secondary" ngbDropdownToggle>{{sort.diplayProperty}}</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -41,5 +44,14 @@
     <ng-container *ngFor="let hotel of searchResult.hotels">
       <app-listing-item [listItem]="hotel"></app-listing-item>
     </ng-container>
+
+    <div *ngIf="searchResult.total !== 0">
+      <ngb-pagination [collectionSize]="searchResult.total"
+        [pageSize]="page.size"
+        [maxSize]="3"
+        [(page)]="page.current" size="sm"
+        (pageChange)="search()" aria-label="Default pagination">
+      </ngb-pagination>
+    </div>
   </section>
 </section>

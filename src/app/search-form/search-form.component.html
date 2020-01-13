@@ -1,10 +1,33 @@
 <div class="search-form">
+  <div *ngIf="layout.indexOf('row')>-1 && isMobileView"
+    class="search-summary"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <div class="summary text-secondary">
+      <span>
+        <fa-icon [icon]="['fas', 'map-marker-alt']" [styles]="summaryIconStyle"></fa-icon>
+        <strong class="text-secondary">{{searchData.location.city}}</strong>
+      </span>
+      <span>
+        <fa-icon [icon]="['fas', 'calendar']" [styles]="summaryIconStyle"></fa-icon>
+        {{searchData.checkInDate | ngbDateFormatter}} -
+        {{searchData.checkOutDate
+        | ngbDateFormatter}}
+      </span>
+    </div>
+    <div class="search-action">
+      <button class="btn btn-sm btn-outline-secondary" (click)="expandSearch()">
+        <fa-icon [icon]="['fas', 'search']"></fa-icon>
+      </button>
+    </div>
+  </div>
   <form novalidate #f="ngForm"
     (ngSubmit)="f.form.valid && searchHotels()"
     [mustHaveDiff]="['checkin','<','checkout']"
     [fxLayout]="layout" fxLayoutGap="15px"
     aria-label="Search hotels"
-    role="search">
+    role="search" [class.expanded]="searchExpanded || !isMobileView"
+    [class.collapsed]="(!searchExpanded && layout.indexOf('row')> -1)">
 
     <section fxLayout="column">
       <label for="location-input">Where are you going?</label>
@@ -29,44 +52,47 @@
           required>
       </div>
     </section>
-    <section fxLayout="row wrap" fxLayoutGap="15px">
-      <div fxFlex="30">
+    <section fxLayout="row wrap"
+      fxLayoutGap="5px">
+      <div fxFlex="30" fxFlex.lt-sm="45">
         <label for="checkin-input">Check-in</label>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <div class="input-group-text" (click)="ciDate.toggle()">
+            <div class="input-group-text">
               <fa-icon [icon]="['far', 'calendar']"></fa-icon>
             </div>
           </div>
           <input type="text" class="form-control"
             id="checkin-input"
+            (click)="ciDate.toggle()"
             ngbDatepicker
             [minDate]="minDate"
             [footerTemplate]="footerTemplate"
             [(ngModel)]="searchData.checkInDate"
             #ciDate="ngbDatepicker"
-            placeholder="check-in"
+            placeholder="check-in date"
             #cin="ngModel"
             [ngClass]="{'invalid': f.submitted && cin.invalid}"
             name="checkin" tabindex="2" required>
         </div>
       </div>
-      <div fxFlex="30">
+      <div fxFlex="30" fxFlex.lt-sm="45">
         <label for="checkout-input">Check-out</label>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <div class="input-group-text" (click)="coDate.toggle()">
+            <div class="input-group-text">
               <fa-icon [icon]="['far', 'calendar']"></fa-icon>
             </div>
           </div>
           <input type="text" class="form-control"
             id="checkout-input"
             ngbDatepicker
+            (click)="coDate.toggle()"
             [minDate]="minDate"
             [footerTemplate]="checkoutFooterTemplate"
             [(ngModel)]="searchData.checkOutDate"
             #coDate="ngbDatepicker"
-            placeholder="check-out"
+            placeholder="check-out date"
             #cout="ngModel"
             [ngClass]="{'invalid': f.submitted && cout.invalid}"
             name="checkout" tabindex="3" required>
@@ -113,7 +139,7 @@
       </div>
     </section>
     <section fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
-      <ng-container *ngIf="layout === 'column'">
+      <ng-container *ngIf="layout.indexOf('column')> -1">
         <div *ngIf="cin.errors && cin.errors.mustHaveDiff" class="date-error"
           role="alert">
           <span>Check-in date should be lower than Check-out date
@@ -125,7 +151,7 @@
           Search hotels</button>
       </section>
     </form>
-    <ng-container *ngIf="layout === 'row'">
+    <ng-container *ngIf="layout.indexOf('row')> -1">
       <div *ngIf="cin.errors && cin.errors.mustHaveDiff" class="date-error"
         role="alert">
         <span>Check-in date should be lower than Check-out date
@@ -138,7 +164,7 @@
     <ng-template #footerTemplate>
       <hr class="my-0">
       <button class="btn btn-primary btn-sm m-2 float-left"
-        (click)="checkInDate=today; ciDate.close()">Today</button>
+        (click)="searchData.checkInDate=today; ciDate.close()">Today</button>
       <button class="btn btn-secondary btn-sm m-2 float-right"
         (click)="ciDate.close()">Close</button>
     </ng-template>
@@ -146,7 +172,7 @@
     <ng-template #checkoutFooterTemplate>
       <hr class="my-0">
       <button class="btn btn-primary btn-sm m-2 float-left"
-        (click)="checkInDate=today;
+        (click)="searchData.checkOutDate=today;
         coDate.close()">Today</button>
       <button class="btn btn-secondary btn-sm m-2 float-right"
         (click)="coDate.close()">Close</button>

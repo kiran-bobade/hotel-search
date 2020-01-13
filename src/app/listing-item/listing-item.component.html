@@ -10,13 +10,13 @@
       fxFlex="50" fxFlex.lt-sm="60" fxFlex.sm="70" fxFlex.gt-sm="70"
       fxLayoutGap="10px" fxLayoutGap.lt-sm="5px"
       fxLayoutAlign="start start">
+      <div class="hotel-name">
+        <span>{{listItem.name}}</span>
+      </div>
       <app-rating [rating]="listItem.star" [maxValue]="listItem.star"
         symbol="&#9733;">
         <small> Hotel</small>
       </app-rating>
-      <div class="hotel-name">
-        <span>{{listItem.name}}</span>
-      </div>
       <div class="hotel-address">
         <fa-icon [icon]="['fas', 'map-marker-alt']" [styles]="{'color':
           'gray'}"></fa-icon>
@@ -33,16 +33,21 @@
       </div>
     </div>
     <div fxFlex="20" fxFlex.gt-xs="22" class="price-container" fxLayout="column"
-      fxLayout.lt-sm="row" fxLayoutAlign="space-around start" fxLayoutGap="5px">
+      fxLayout.lt-sm="row" fxLayoutAlign="space-around start"
+      fxLayoutGap="15px">
       <div fxFlex.gt-xs="20" fxFlex.lt-sm="70" class="price-info">
         <span fxHide.lt-sm class="sup">from</span>
         <span class="highlight">${{listItem.minPrice.displayPrice}}</span> <sub>/night</sub>
-        <span class="badge badge-light" fxHide.gt-sm fxHide.sm>Total:
-          ${{listItem.minPrice.price * guestCount | thousandSeparator}}</span>
+        <span class="badge badge-light badge-total" fxHide.gt-sm fxHide.sm>Total:
+          ${{listItem.minPrice.price * (guestCount > 3 ? 3:guestCount) |
+          thousandSeparator}} <small *ngIf="guestCount> 3">+</small> </span>
       </div>
       <div fxFlex="10" fxHide.lt-sm>
         <span class="badge badge-light badge-total">Total:
-          ${{listItem.minPrice.price * guestCount | thousandSeparator}}</span>
+          ${{listItem.minPrice.price * (guestCount > 3 ? 3:guestCount) |
+          thousandSeparator}}
+          <small *ngIf="guestCount> 3">+</small>
+        </span>
       </div>
 
       <div fxFlex.gt-sm="10" fxFlex.sm="10" fxFlex.lt-sm="50" fxFlexAlign="end"

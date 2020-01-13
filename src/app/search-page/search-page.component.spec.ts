@@ -34,4 +34,5 @@ describe('SearchPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

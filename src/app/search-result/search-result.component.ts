@@ -9,13 +9,13 @@ import { SearchData } from '../models/search-data';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss']
 })
-export class SearchResultComponent implements OnInit, OnChanges {
+export class SearchResultComponent implements OnInit {
 
   public searchData: SearchData;
   public searchResult: any = {};
 
   public page = {
-    size: 1,
+    size: 3,
     current: 1
   };
 
@@ -36,9 +36,6 @@ export class SearchResultComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(): void {
-    console.log('on changes');
-  }
   public search() {
     this.searchService.searchHotels(this.page, this.sort,
       { city: this.searchData.location.city }).subscribe((data) => {
