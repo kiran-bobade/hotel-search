@@ -30,7 +30,6 @@ export class SearchService {
         }),
         map((filtered: any) => {
           const filteredHotels = Object.assign([], filtered.hotels);
-          console.log('hotels count', filteredHotels, page);
 
           let startIndex = 0;
           if (page.current === 1) {
@@ -43,7 +42,6 @@ export class SearchService {
             }
           }
           const pagedHotels = filteredHotels.splice(startIndex, page.size);
-          console.log('paged', { total: filtered.total, hotels: pagedHotels });
           return { total: filtered.total, hotels: pagedHotels };
         })
       );
@@ -53,7 +51,6 @@ export class SearchService {
     if (sortBy) {
       switch (sortBy.property) {
         case 'price':
-          console.log('sorting', sortBy);
           if (sortBy.order === 'asc') {
             return (item1.minPrice.price > item2.minPrice.price) ? 1 : -1;
           } else {
