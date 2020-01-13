@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecentSearchBoxComponent } from './recent-search-box.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SearchHistoryService } from '../services/search-history.service';
 
 describe('RecentSearchBoxComponent', () => {
   let component: RecentSearchBoxComponent;
@@ -8,15 +11,17 @@ describe('RecentSearchBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecentSearchBoxComponent ]
+      imports: [FontAwesomeModule, RouterTestingModule],
+      declarations: [RecentSearchBoxComponent],
+      providers: [SearchHistoryService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RecentSearchBoxComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

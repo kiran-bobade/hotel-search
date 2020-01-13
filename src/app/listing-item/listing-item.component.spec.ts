@@ -5,7 +5,7 @@ import { NgbRatingModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingComponent } from '../rating/rating.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThousandSeparatorPipe } from '../utils/thousand-separator.pipe';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ListingItemComponent', () => {
   let component: ListingItemComponent;
@@ -13,9 +13,9 @@ describe('ListingItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgbModule, NgbRatingModule, FontAwesomeModule],
+      imports: [NgbModule, NgbRatingModule, FontAwesomeModule, RouterTestingModule],
       declarations: [ListingItemComponent, RatingComponent, ThousandSeparatorPipe],
-      providers: [AppRoutingModule]
+      providers: []
     })
       .compileComponents();
   }));
@@ -23,7 +23,7 @@ describe('ListingItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListingItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

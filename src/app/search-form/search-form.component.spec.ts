@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFormComponent } from './search-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LocationService } from '../services/location.service';
+import { SearchHistoryService } from '../services/search-history.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { MustHaveDiffDirective } from '../utils/date-diff.directive';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
@@ -8,9 +17,12 @@ describe('SearchFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFormComponent ]
+      imports: [NgbModule, RouterTestingModule, FontAwesomeModule,
+        FormsModule, FlexLayoutModule, HttpClientTestingModule],
+      declarations: [SearchFormComponent, MustHaveDiffDirective],
+      providers: [LocationService, SearchHistoryService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
