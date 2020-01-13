@@ -16,7 +16,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="end end">
         <div class="btn-group">
-            <button class="btn btn-sm btn-light">
+            <button class="btn btn-sm btn-light" (click)="applySearch(data)">
                 <fa-icon [icon]="['fas','search']" [styles]="iconStyles"></fa-icon>
             </button>
             <button class="btn btn-sm btn-light" (click)="removeHistory(data)">

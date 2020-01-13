@@ -2,10 +2,12 @@
   <form novalidate #f="ngForm"
     (ngSubmit)="f.form.valid && searchHotels()"
     [mustHaveDiff]="['checkin','<','checkout']"
-    [fxLayout]="layout" fxLayoutGap="15px">
+    [fxLayout]="layout" fxLayoutGap="15px"
+    aria-label="Search hotels"
+    role="search">
 
     <section fxLayout="column">
-      <label>Where are you going?</label>
+      <label for="location-input">Where are you going?</label>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <div class="input-group-text">
@@ -13,7 +15,7 @@
           </div>
         </div>
         <input type="text" class="form-control"
-          id="inlineFormInputGroup"
+          id="location-input"
           placeholder="enter destination"
           name="searchTerm"
           [(ngModel)]="searchTerm"
@@ -23,12 +25,13 @@
           (selectItem)="setSearchLocation($event)"
           #location="ngModel"
           [ngClass]="{'invalid': f.submitted && location.invalid}"
+          tabindex="1"
           required>
       </div>
     </section>
     <section fxLayout="row wrap" fxLayoutGap="15px">
       <div fxFlex="30">
-        <label>Check-in</label>
+        <label for="checkin-input">Check-in</label>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text" (click)="ciDate.toggle()">
@@ -36,6 +39,7 @@
             </div>
           </div>
           <input type="text" class="form-control"
+            id="checkin-input"
             ngbDatepicker
             [minDate]="minDate"
             [footerTemplate]="footerTemplate"
@@ -44,11 +48,11 @@
             placeholder="check-in"
             #cin="ngModel"
             [ngClass]="{'invalid': f.submitted && cin.invalid}"
-            name="checkin" required>
+            name="checkin" tabindex="2" required>
         </div>
       </div>
       <div fxFlex="30">
-        <label>Check-out</label>
+        <label for="checkout-input">Check-out</label>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text" (click)="coDate.toggle()">
@@ -56,6 +60,7 @@
             </div>
           </div>
           <input type="text" class="form-control"
+            id="checkout-input"
             ngbDatepicker
             [minDate]="minDate"
             [footerTemplate]="checkoutFooterTemplate"
@@ -64,42 +69,43 @@
             placeholder="check-out"
             #cout="ngModel"
             [ngClass]="{'invalid': f.submitted && cout.invalid}"
-            name="checkout" required>
+            name="checkout" tabindex="3" required>
         </div>
       </div>
       <div fxFlex="30">
-        <label>Guests</label>
-        <div class="input-group mb-2">
+        <label id="guest-options">Guests</label>
+        <div class="input-group mb-2" role="guestcounts"
+          aria-labelledby="guest-options">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-light circular"
+            <label for="count-1" class="btn btn-light circular"
               [ngClass]="{'active': isSelectedGuestCount(1)}"
               (click)="setGuestCount(1)">
               <input type="radio" name="options"
-                id="count-1" autocomplete="off"
+                id="count-1" autocomplete="off" tabindex="4"
                 checked> 1
             </label>
-            <label class="btn btn-light"
+            <label for="count-2" class="btn btn-light"
               [ngClass]="{'active': isSelectedGuestCount(2)}"
               (click)="setGuestCount(2)">
               <input type="radio" name="options"
                 id="count-2"
-                autocomplete="off">
+                autocomplete="off" tabindex="5">
               2
             </label>
-            <label class="btn btn-light"
+            <label for="count-3" class="btn btn-light"
               [ngClass]="{'active': isSelectedGuestCount(3)}"
               (click)="setGuestCount(3)">
               <input type="radio" name="options"
                 id="count-3"
-                autocomplete="off">
+                autocomplete="off" tabindex="6">
               3
             </label>
-            <label class="btn btn-light circular"
+            <label for="count-4" class="btn btn-light circular"
               [ngClass]="{'active': isSelectedGuestCount(4)}"
               (click)="setGuestCount(4)">
               <input type="radio" name="options"
                 id="count-4"
-                autocomplete="off">
+                autocomplete="off" tabindex="7">
               3+
             </label>
           </div>
@@ -114,7 +120,7 @@
             <button class="btn btn-sm btn-link" (click)="switchDates()">><</button></span>
           </div>
         </ng-container>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" tabindex="8">
           <fa-icon [icon]="['fas', 'search']"></fa-icon>
           Search hotels</button>
       </section>

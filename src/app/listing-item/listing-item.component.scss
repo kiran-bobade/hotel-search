@@ -57,7 +57,7 @@ small {
   font-size: 14px;
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 400px) {
   .hotel-address {
     span {
       font-size: 12px;
@@ -71,10 +71,48 @@ small {
     overflow: hidden;
     max-width: 150px;
   }
+  .highlight {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .btn-search {
+    font-size: 10px;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 599px) {
+  .hotel-address {
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .hotel-address,
+  .hotel-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+  }
+
+  .highlight {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .btn-search {
+    font-size: 12px;
+    float: right;
+  }
 }
 
 @media only screen and (min-width: 600px) {
   .hotel-address {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 300px;
+
     span {
       font-size: 15px;
     }

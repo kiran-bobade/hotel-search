@@ -10,6 +10,7 @@ export class SearchData {
     constructor() {
         this.checkInDate = {};
         this.checkOutDate = {};
+        this.location = { city: '', latitude: '', longitude: '', state: '' };
         this.guestCount = 2;
         this.uid = new Date().getUTCMilliseconds().toString();
     }

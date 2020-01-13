@@ -1,12 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbCalendar, NgbDateStruct, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LocationService } from '../services/location.service';
 import { Observable } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { map, debounceTime, distinctUntilChanged, switchMap, isEmpty } from 'rxjs/operators';
 import { SearchData } from '../models/search-data';
-import { isNullOrUndefined } from 'util';
-import { Constants } from '../utils/constants';
 import { SearchHistoryService } from '../services/search-history.service';
 import { Util } from '../utils/util';
 import {
@@ -29,8 +27,8 @@ export class SearchFormComponent implements OnInit {
   @Input() layout = 'column wrap';
   constructor(
     private readonly calendar: NgbCalendar,
-    private datePickerConfig: NgbDatepickerConfig,
     private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private readonly locationService: LocationService,
     private searchHistory: SearchHistoryService,
     private breakpointObserver: BreakpointObserver) {
@@ -44,6 +42,9 @@ export class SearchFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.searchData = new SearchData();
+
+    this.parseQueryParams();
+
     this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
       .subscribe((state: BreakpointState) => {
@@ -51,6 +52,18 @@ export class SearchFormComponent implements OnInit {
           console.log('viewport mode', state);
         }
       });
+  }
+
+  private parseQueryParams() {
+    this.route.queryParams.subscribe((params: any) => {
+      if (!Util.isEmptyObject(params)) {
+        this.searchData.checkInDate = Util.valuesToInt(Util.toObject(params.cin));
+        this.searchData.checkOutDate = Util.valuesToInt(Util.toObject(params.cout));
+        this.searchData.guestCount = parseInt(params.gst, 0);
+        this.searchData.location.city = params.city;
+        this.searchTerm = params.city;
+      }
+    });
   }
 
   public searchHotels(): void {
@@ -61,7 +74,8 @@ export class SearchFormComponent implements OnInit {
         cout: Util.toQueryParams(this.searchData.checkOutDate),
         gst: this.searchData.guestCount,
         lat: this.searchData.location.latitude,
-        lang: this.searchData.location.longitude
+        lang: this.searchData.location.longitude,
+        city: this.searchData.location.city
       }
     });
   }
@@ -113,7 +127,7 @@ export class SearchFormComponent implements OnInit {
       distinctUntilChanged(),
       switchMap(term =>
         term.length < 3 ? [] :
-          this.locationService.getLocations(term)
+          this.locationService.getLocations()
             .pipe(
               map(locations =>
                 locations

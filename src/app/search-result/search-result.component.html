@@ -10,10 +10,36 @@
     </div>
   </aside>
   <section fxFlex="80" fxFlex.lt-md="100" class="search-result">
-    <app-listing-item></app-listing-item>
-    <app-listing-item></app-listing-item>
-    <app-listing-item></app-listing-item>
-    <app-listing-item></app-listing-item>
-    <app-listing-item></app-listing-item>
+    <div *ngIf="!searchResult || !searchResult.hotels" fxFlexAlign="center"
+      fxLayout="row" fxLayoutAlign="center center">
+      <span class="alert alert-info"> No hotels found</span>
+    </div>
+    <div *ngIf="searchResult && searchResult.hotels">
+      <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div>
+          <ngb-pagination [collectionSize]="searchResult.total"
+            [pageSize]="page.size"
+            [(page)]="page.current" size="md"
+            (pageChange)="search()" aria-label="Default pagination">
+          </ngb-pagination>
+        </div>
+        <div>
+          Sort by
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-sm btn-outline-secondary" ngbDropdownToggle>{{sort.diplayProperty}}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="orderBy('rating','desc')">Rating</button>
+              <button ngbDropdownItem (click)="orderBy('price','asc')">
+                Price low-high</button>
+              <button ngbDropdownItem (click)="orderBy('price','desc')">
+                Price high-low</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngFor="let hotel of searchResult.hotels">
+      <app-listing-item [listItem]="hotel"></app-listing-item>
+    </ng-container>
   </section>
 </section>

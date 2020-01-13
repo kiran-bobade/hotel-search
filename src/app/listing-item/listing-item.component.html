@@ -1,47 +1,56 @@
 <div class="card listing-item" fxLayout="row wrap" fxLayoutAlign="start start"
   fxLayoutGap="5px">
   <div fxFlex.gt-sm="20" fxFlex.lt-sm="35" class="image-container">
-    <img class="img-fluid" src="https://picsum.photos/200" />
+    <img class="img-fluid" aria-label="hotel-thumbnail"
+      src="{{listItem.thumbnailUrl}}" />
   </div>
   <div fxLayout.gt-sm="row wrap" fxLayout.lt-sm="column" fxFlex.lt-sm="60"
     fxFlex.gt-xs="75">
     <div class="info-container" fxLayout="column"
-      fxFlex="50" fxFlex.lt-sm="60" fxFlex.gt-sm="70"
+      fxFlex="50" fxFlex.lt-sm="60" fxFlex.sm="70" fxFlex.gt-sm="70"
       fxLayoutGap="10px" fxLayoutGap.lt-sm="5px"
       fxLayoutAlign="start start">
-      <app-rating [rating]="5" maxValue="5" symbol="&#9733;">
+      <app-rating [rating]="listItem.star" [maxValue]="listItem.star"
+        symbol="&#9733;">
         <small> Hotel</small>
       </app-rating>
       <div class="hotel-name">
-        <span>Mandrin Oriental, Las Vegas</span>
+        <span>{{listItem.name}}</span>
       </div>
       <div class="hotel-address">
         <fa-icon [icon]="['fas', 'map-marker-alt']" [styles]="{'color':
           'gray'}"></fa-icon>
-        <span>3752 Las Vegas Blvd S, Las Vegas </span>
+        <span>{{listItem.locality.city}} - {{listItem.locality.address}}</span>
       </div>
       <div fxLayout="column" fxLayoutAlign="end start">
-        <app-rating [rating]="currentRate" symbol="&#9829;" color="red">
+        <app-rating [rating]="listItem.rating.value" symbol="&#9829;"
+          color="red">
           <span>
-            <small class="badge" [ngClass]="ratingBadge">{{currentRate}}</small>
-            <small>(300 reviews)</small>
+            <small class="badge" [ngClass]="ratingBadge">{{listItem.rating.value}}</small>
+            <small fxHide.xs>({{listItem.rating.totalReviews}} reviews)</small>
           </span>
         </app-rating>
       </div>
     </div>
-    <div fxFlex="20" class="price-container" fxLayout="column"
+    <div fxFlex="20" fxFlex.gt-xs="22" class="price-container" fxLayout="column"
       fxLayout.lt-sm="row" fxLayoutAlign="space-around start" fxLayoutGap="5px">
-      <div fxFlex.gt-xs="20" fxFlex.lt-sm="50">
+      <div fxFlex.gt-xs="20" fxFlex.lt-sm="70" class="price-info">
         <span fxHide.lt-sm class="sup">from</span>
-        <span class="highlight">$370</span> <sub>/night</sub>
-        <span class="badge badge-light" fxHide.gt-sm>Total: $370</span>
+        <span class="highlight">${{listItem.minPrice.displayPrice}}</span> <sub>/night</sub>
+        <span class="badge badge-light" fxHide.gt-sm fxHide.sm>Total:
+          ${{listItem.minPrice.price * guestCount | thousandSeparator}}</span>
       </div>
       <div fxFlex="10" fxHide.lt-sm>
-        <span class="badge badge-light badge-total">Total: $370</span>
+        <span class="badge badge-light badge-total">Total:
+          ${{listItem.minPrice.price * guestCount | thousandSeparator}}</span>
       </div>
-      <div fxFlex.gt-sm="10" fxFlex.lt-sm="50" fxFlexAlign="end"
-        fxFlexAlign.gt-md="start">
-        <button class="btn btn-sm btn-success"> Show rooms</button>
+
+      <div fxFlex.gt-sm="10" fxFlex.sm="10" fxFlex.lt-sm="50" fxFlexAlign="end"
+        fxFlexAlign.gt-sm="start" fxFlexAlign.sm="start">
+        <button class="btn btn-sm btn-success btn-search">
+          <fa-icon fxHide.gt-sm fxHide.sm [icon]="['fas','arrow-right']"></fa-icon>
+          <span fxHide.xs> Show rooms</span>
+        </button>
       </div>
     </div>
   </div>

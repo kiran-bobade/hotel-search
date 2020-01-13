@@ -27,6 +27,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { RecentSearchBoxComponent } from './recent-search-box/recent-search-box.component';
 import { MustHaveDiffDirective } from './utils/date-diff.directive';
 import { RatingComponent } from './rating/rating.component';
+import { ThousandSeparatorPipe } from './utils/thousand-separator.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RatingComponent } from './rating/rating.component';
     SearchPageComponent,
     RecentSearchBoxComponent,
     MustHaveDiffDirective,
-    RatingComponent
+    RatingComponent,
+    ThousandSeparatorPipe
   ],
   imports: [
     BrowserModule,

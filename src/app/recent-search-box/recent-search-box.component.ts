@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchData } from '../models/search-data';
 import { SearchHistoryService } from '../services/search-history.service';
+import { Router } from '@angular/router';
+import { Util } from '../utils/util';
 
 @Component({
   selector: 'app-recent-search-box',
@@ -12,13 +14,24 @@ export class RecentSearchBoxComponent {
   @Input() data: SearchData;
   public iconStyles = { stroke: 'gray', color: 'gray' };
 
-  constructor(private searchHistory: SearchHistoryService) { }
+  constructor(
+    private searchHistory: SearchHistoryService,
+    private router: Router) { }
 
   public removeHistory(item: SearchData) {
     this.searchHistory.delete(item.uid);
   }
 
   public applySearch(item: SearchData): void {
-
+    this.router.navigate(['result'], {
+      queryParams: {
+        cin: Util.toQueryParams(item.checkInDate),
+        cout: Util.toQueryParams(item.checkOutDate),
+        gst: item.guestCount,
+        lat: item.location.latitude,
+        lang: item.location.longitude,
+        city: item.location.city
+      }
+    });
   }
 }

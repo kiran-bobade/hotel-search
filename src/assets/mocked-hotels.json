@@ -1,201 +1,350 @@
 {
-    "data": {
-        "total": 30,
-        "currentPage": 1,
-        "itemsPerPage": 10,
-        "hotels": [
-            {
-                "id": "",
-                "name": "Hotel Kohinoor Continental",
-                "accommodationType": "Hotel",
-                "locality": {
-                    "city": "Mumbai",
-                    "address": "Patel Complex, Opposite Johnson and Johnson, Safed Pool, Kurla - Andheri Road, 400072,"
-                },
-                "geocode": {
-                    "lng": 72.88486,
-                    "lat": 19.10189
-                },
-                "hasSpecialOffer": false,
-                "star": 5,
-                "rating": {
-                    "totalReviews": 300,
-                    "value": 3.5
-                },
-                "minPrice": {
-                    "displayPrice": "10,376",
-                    "price": 10376
-                },
-                "maxPrice": {
-                    "displayPrice": "22,000",
-                    "price": 22000
-                },
-                "highlights": [
-                    "wifi",
-                    "parking",
-                    "swimming pool",
-                    "free breakfast",
-                    "air conditioning",
-                    "television",
-                    "gym",
-                    "massage",
-                    "spa",
-                    "sauna"
-                ]
+    "hotels": [
+        {
+            "id": "1",
+            "name": "Hotel Kohinoor Continental",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1495365200479-c4ed1d35e1aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "Patel Complex, Opposite Johnson and Johnson, Safed Pool, Kurla - Andheri Road, 400072,"
             },
-            {
-                "id": "",
-                "name": "Sofitel Mumbai BKC",
-                "accommodationType": "Hotel",
-                "locality": {
-                    "city": "Mumbai",
-                    "address": "Opposite Johnson and Johnson, Safed Pool, Kurla,"
-                },
-                "geocode": {
-                    "lng": 72.86891,
-                    "lat": 19.06773
-                },
-                "hasSpecialOffer": false,
-                "star": 4,
-                "rating": {
-                    "totalReviews": 152,
-                    "value": 3.8
-                },
-                "minPrice": {
-                    "displayPrice": "8,499",
-                    "price": 8499
-                },
-                "maxPrice": {
-                    "displayPrice": "12,000",
-                    "price": 12000
-                },
-                "highlights": [
-                    "wifi",
-                    "parking",
-                    "swimming pool",
-                    "free breakfast",
-                    "air conditioning",
-                    "television",
-                    "spa",
-                    "sauna"
-                ]
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
             },
-            {
-                "id": "3",
-                "name": "Courtyard by Marriott Pune Chakan",
-                "accommodationType": "Hotel",
-                "locality": {
-                    "city": "Pune",
-                    "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
-                },
-                "geocode": {
-                    "lng": 72.88486,
-                    "lat": 19.10189
-                },
-                "hasSpecialOffer": false,
-                "star": 5,
-                "rating": {
-                    "totalReviews": 975,
-                    "value": 4.6
-                },
-                "minPrice": {
-                    "displayPrice": "4,376",
-                    "price": 4376
-                },
-                "maxPrice": {
-                    "displayPrice": "19,700",
-                    "price": 19700
-                },
-                "highlights": [
-                    "wifi",
-                    "parking",
-                    "swimming pool",
-                    "free breakfast",
-                    "air conditioning",
-                    "television",
-                    "gym",
-                    "massage",
-                    "spa",
-                    "sauna"
-                ]
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 300,
+                "value": 3.5
             },
-            {
-                "id": "4",
-                "name": "Ramee Grand Pune",
-                "accommodationType": "Hotel",
-                "locality": {
-                    "city": "Pune",
-                    "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
-                },
-                "geocode": {
-                    "lng": 72.88486,
-                    "lat": 19.10189
-                },
-                "hasSpecialOffer": false,
-                "star": 5,
-                "rating": {
-                    "totalReviews": 751,
-                    "value": 3.1
-                },
-                "minPrice": {
-                    "displayPrice": "8,562",
-                    "price": 8562
-                },
-                "maxPrice": {
-                    "displayPrice": "13,999",
-                    "price": 13999
-                },
-                "highlights": [
-                    "wifi",
-                    "parking",
-                    "swimming pool",
-                    "free breakfast",
-                    "air conditioning",
-                    "television",
-                    "gym",
-                    "massage",
-                    "spa",
-                    "sauna"
-                ]
+            "minPrice": {
+                "displayPrice": "10,376",
+                "price": 10376
             },
-            {
-                "id": "5",
-                "name": "Royalton",
-                "accommodationType": "Hotel",
-                "locality": {
-                    "city": "New York",
-                    "address": "44 West 44th Street, 10036, New York, USA"
-                },
-                "geocode": {
-                    "lng": 72.88486,
-                    "lat": 19.10189
-                },
-                "hasSpecialOffer": false,
-                "star": 7,
-                "rating": {
-                    "totalReviews": 1201,
-                    "value": 4.8
-                },
-                "minPrice": {
-                    "displayPrice": "12,606",
-                    "price": 12606
-                },
-                "maxPrice": {
-                    "displayPrice": "25399",
-                    "price": 25399
-                },
-                "highlights": [
-                    "wifi",
-                    "parking",
-                    "swimming pool",
-                    "free breakfast",
-                    "air conditioning",
-                    "television",
-                    "gym",
-                    "spa",
-                    "pets"
-                ]
-            }
-        ]
-    }
+            "maxPrice": {
+                "displayPrice": "22,000",
+                "price": 22000
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "massage",
+                "spa",
+                "sauna"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Sofitel Mumbai BKC",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1535827841776-24afc1e255ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "Opposite Johnson and Johnson, Safed Pool, Kurla,"
+            },
+            "geocode": {
+                "lng": 72.86891,
+                "lat": 19.06773
+            },
+            "hasSpecialOffer": false,
+            "star": 4,
+            "rating": {
+                "totalReviews": 152,
+                "value": 3.8
+            },
+            "minPrice": {
+                "displayPrice": "8,499",
+                "price": 8499
+            },
+            "maxPrice": {
+                "displayPrice": "12,000",
+                "price": 12000
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "spa",
+                "sauna"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Courtyard by Marriott Pune Chakan",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+            "locality": {
+                "city": "Pune",
+                "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 975,
+                "value": 4.6
+            },
+            "minPrice": {
+                "displayPrice": "4,376",
+                "price": 4376
+            },
+            "maxPrice": {
+                "displayPrice": "19,700",
+                "price": 19700
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "massage",
+                "spa",
+                "sauna"
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Ramee Grand Pune",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "locality": {
+                "city": "Pune",
+                "address": "Plot P-7, MIDC, Chakan Industrial Area Phase-1, Talegaon Chakan road, 410501 , Pune"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 751,
+                "value": 3.1
+            },
+            "minPrice": {
+                "displayPrice": "8,562",
+                "price": 8562
+            },
+            "maxPrice": {
+                "displayPrice": "13,999",
+                "price": 13999
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "massage",
+                "spa",
+                "sauna"
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Royalton",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1553653924-39b70295f8da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "locality": {
+                "city": "New York",
+                "address": "44 West 44th Street, 10036, New York, USA"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 7,
+            "rating": {
+                "totalReviews": 1201,
+                "value": 4.8
+            },
+            "minPrice": {
+                "displayPrice": "12,606",
+                "price": 12606
+            },
+            "maxPrice": {
+                "displayPrice": "25399",
+                "price": 25399
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "spa",
+                "pets"
+            ]
+        },
+        {
+            "id": "6",
+            "name": "Hotel Paramount",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "Andheri East, 400072,"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 82,
+                "value": 2.8
+            },
+            "minPrice": {
+                "displayPrice": "3,499",
+                "price": 3499
+            },
+            "maxPrice": {
+                "displayPrice": "6,000",
+                "price": 6000
+            },
+            "highlights": [
+                "parking",
+                "air conditioning",
+                "television",
+                "gym"
+            ]
+        },
+        {
+            "id": "7",
+            "name": "Hotel Sheraton",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "Varali Naka"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 451,
+                "value": 4.0
+            },
+            "minPrice": {
+                "displayPrice": "4,500",
+                "price": 4500
+            },
+            "maxPrice": {
+                "displayPrice": "7,000",
+                "price": 7000
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "spa",
+                "pets"
+            ]
+        },
+        {
+            "id": "8",
+            "name": "OYO Townhouse 016 International Airport",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "Andheri East"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 5,
+            "rating": {
+                "totalReviews": 451,
+                "value": 4.6
+            },
+            "minPrice": {
+                "displayPrice": "3,576",
+                "price": 3576
+            },
+            "maxPrice": {
+                "displayPrice": "7,500",
+                "price": 7500
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym",
+                "spa",
+                "pets"
+            ]
+        },
+        {
+            "id": "9",
+            "name": "Hotel Golden Park",
+            "accommodationType": "Hotel",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "locality": {
+                "city": "Mumbai",
+                "address": "1st Floor, A-wing, shop 2, Sagar Malkani Complex, Near JVLR JNC, Next to Makaz Hotel, Jogeshwari West, Mumbai, 400102, Andheri West"
+            },
+            "geocode": {
+                "lng": 72.88486,
+                "lat": 19.10189
+            },
+            "hasSpecialOffer": false,
+            "star": 3,
+            "rating": {
+                "totalReviews": 960,
+                "value": 4.7
+            },
+            "minPrice": {
+                "displayPrice": "1,538",
+                "price": 1538
+            },
+            "maxPrice": {
+                "displayPrice": "3,900",
+                "price": 3900
+            },
+            "highlights": [
+                "wifi",
+                "parking",
+                "swimming pool",
+                "free breakfast",
+                "air conditioning",
+                "television",
+                "gym"
+            ]
+        }
+    ]
 }
