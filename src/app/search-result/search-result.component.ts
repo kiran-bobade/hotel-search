@@ -36,6 +36,9 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
+  /**
+   * Search hotels based on current Pagination, Sort and Filters
+   */
   public search() {
     this.searchService.searchHotels(this.page, this.sort,
       { city: this.searchData.location.city }).subscribe((data) => {
@@ -43,6 +46,11 @@ export class SearchResultComponent implements OnInit {
       });
   }
 
+  /**
+   * Sort search result
+   * @param property: Property in response
+   * @param order: Sort order
+   */
   public orderBy(property: string, order: string): void {
     switch (property) {
       case 'price':
@@ -63,6 +71,10 @@ export class SearchResultComponent implements OnInit {
   }
 
 
+  /**
+   * Extract query parameters
+   * @param params: Query params
+   */
   private extractQueryParams(params: any) {
     if (!Util.isEmptyObject(params)) {
       this.searchData = new SearchData();

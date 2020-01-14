@@ -59,6 +59,9 @@ export class SearchFormComponent implements OnInit {
       });
   }
 
+  /**
+   * Parses query paramters and extract search properties
+   */
   private parseQueryParams() {
     this.route.queryParams.subscribe((params: any) => {
       if (!Util.isEmptyObject(params)) {
@@ -71,6 +74,10 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
+  /**
+   * Search hotels using parsed query parameters
+   * and updates search history
+   */
   public searchHotels(): void {
     this.searchHistory.update(this.searchData);
     this.router.navigate(['result'], {
@@ -85,10 +92,17 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
+  /**
+   * Sets location data coming from UI to searchData model
+   * @param location: currently selected location
+   */
   public setSearchLocation(location: any): void {
     this.searchData.location = location.item;
   }
 
+  /**
+   * Asks for user permission to share for Geolocation
+   */
   public geolocate(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -101,10 +115,18 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
+  /**
+   * Format autocomplete selected value for output
+   * @param value: Value selected in autocomplete input
+   */
   public resultFormatter(value: any) {
     return value.city;
   }
 
+  /**
+   * Format autocomplete selected value for input
+   * @param value: Value selected in autocomplete input
+   */
   public inputFormatter(value: any) {
     if (value.city) {
       return value.city;
@@ -112,24 +134,41 @@ export class SearchFormComponent implements OnInit {
     return value;
   }
 
+  /**
+   * Sets Guest count to searchData model
+   * @param count: Guest count
+   */
   public setGuestCount(count: number): void {
     this.searchData.guestCount = count;
   }
 
+  /**
+   * Checks if current guest count is selected in searchData model
+   * @param count: Guest count
+   */
   public isSelectedGuestCount(count: number): boolean {
     return this.searchData.guestCount === count;
   }
 
+  /**
+   * Switch Check-in and Check-out dates
+   */
   public switchDates() {
     const tempDate = this.searchData.checkOutDate;
     this.searchData.checkOutDate = this.searchData.checkInDate;
     this.searchData.checkInDate = tempDate;
   }
 
+  /**
+   * Expands search form
+   */
   public expandSearch() {
     this.searchExpanded = !this.searchExpanded;
   }
 
+  /**
+   * Search location based on user input stream
+   */
   public searchLocation = (searchText: Observable<string>) =>
     searchText.pipe(
       debounceTime(200),

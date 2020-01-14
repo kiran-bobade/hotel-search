@@ -14,6 +14,9 @@ export class LocationService {
   constructor(private readonly httpClient: HttpClient) {
   }
 
+  /**
+   * Retrive all locations
+   */
   public getLocations(): Observable<Location[]> {
     return this.httpClient.get(this.URI)
       .pipe(

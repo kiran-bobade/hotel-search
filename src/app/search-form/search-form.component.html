@@ -54,7 +54,7 @@
         </div>
       </div>
     </section>
-    <section fxLayout="row wrap"
+    <section fxFlex="60" fxLayout="row wrap" fxLayout.lt-sm="column"
       fxLayoutGap="5px">
       <div fxFlex="30" fxFlex.lt-sm="45">
         <label for="checkin-input">Check-in</label>
@@ -161,8 +161,6 @@
         </div>
       </ng-container>
     </div>
-
-
     <ng-template #footerTemplate>
       <hr class="my-0">
       <button class="btn btn-primary btn-sm m-2 float-left"

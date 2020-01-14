@@ -22,6 +22,10 @@ export class RecentSearchBoxComponent {
     this.searchHistory.delete(item.uid);
   }
 
+  /**
+   * Search hotels based on searchData model
+   * @param item: SearchData model
+   */
   public applySearch(item: SearchData): void {
     this.router.navigate(['result'], {
       queryParams: {

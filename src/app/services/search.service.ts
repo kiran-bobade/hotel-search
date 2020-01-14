@@ -10,6 +10,12 @@ export class SearchService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
+  /**
+   * Search hotels by selected Pagination, Sort and Filter configuration
+   * @param page: Pagination configuration
+   * @param sortBy: Sorting configuration
+   * @param filters: Filters
+   */
 
   public searchHotels(page: any, sortBy?: any, filters?: any): Observable<any> {
     return this.httpClient.get('/assets/mocked-hotels.json')
