@@ -26,7 +26,7 @@ export class SearchResultComponent implements OnInit {
   };
 
   constructor(
-    private searchService: SearchService,
+    private readonly searchService: SearchService,
     private readonly route: ActivatedRoute) { }
 
   public ngOnInit(): void {

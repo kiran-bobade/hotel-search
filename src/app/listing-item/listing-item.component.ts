@@ -14,7 +14,7 @@ export class ListingItemComponent implements OnInit {
   public ratingBadge = {};
   public guestCount = 2;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
     this.ratingBadge = {

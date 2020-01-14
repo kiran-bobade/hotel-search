@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class LocationService {
   private LOCATIONS: Location[] = [];
   private URI = '/assets/mocked-locations.json';
-  constructor(private httpClient: HttpClient) {
+  constructor(private readonly httpClient: HttpClient) {
   }
 
   public getLocations(): Observable<Location[]> {

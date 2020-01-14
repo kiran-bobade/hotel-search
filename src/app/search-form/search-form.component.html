@@ -30,26 +30,28 @@
     [class.collapsed]="(!searchExpanded && layout.indexOf('row')> -1)">
 
     <section fxLayout="column">
-      <label for="location-input">Where are you going?</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon>
+      <div>
+        <label for="location-input">Where are you going?</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon>
+            </div>
           </div>
+          <input type="text" class="form-control"
+            id="location-input"
+            placeholder="enter destination"
+            name="searchTerm"
+            [(ngModel)]="searchTerm"
+            [ngbTypeahead]="searchLocation"
+            [resultFormatter]="resultFormatter"
+            [inputFormatter]="inputFormatter"
+            (selectItem)="setSearchLocation($event)"
+            #location="ngModel"
+            [ngClass]="{'invalid': f.submitted && location.invalid}"
+            tabindex="1"
+            required>
         </div>
-        <input type="text" class="form-control"
-          id="location-input"
-          placeholder="enter destination"
-          name="searchTerm"
-          [(ngModel)]="searchTerm"
-          [ngbTypeahead]="searchLocation"
-          [resultFormatter]="resultFormatter"
-          [inputFormatter]="inputFormatter"
-          (selectItem)="setSearchLocation($event)"
-          #location="ngModel"
-          [ngClass]="{'invalid': f.submitted && location.invalid}"
-          tabindex="1"
-          required>
       </div>
     </section>
     <section fxLayout="row wrap"

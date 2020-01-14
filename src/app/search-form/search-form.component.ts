@@ -37,8 +37,8 @@ export class SearchFormComponent implements OnInit {
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly locationService: LocationService,
-    private searchHistory: SearchHistoryService,
-    private breakpointObserver: BreakpointObserver) {
+    private readonly searchHistory: SearchHistoryService,
+    private readonly breakpointObserver: BreakpointObserver) {
     const current = new Date();
     this.minDate = {
       year: current.getFullYear(),

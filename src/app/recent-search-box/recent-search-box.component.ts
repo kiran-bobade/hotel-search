@@ -15,8 +15,8 @@ export class RecentSearchBoxComponent {
   public iconStyles = { stroke: 'gray', color: 'gray' };
 
   constructor(
-    private searchHistory: SearchHistoryService,
-    private router: Router) { }
+    private readonly searchHistory: SearchHistoryService,
+    private readonly router: Router) { }
 
   public removeHistory(item: SearchData) {
     this.searchHistory.delete(item.uid);

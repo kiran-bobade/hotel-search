@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
 
 
   public searchHotels(page: any, sortBy?: any, filters?: any): Observable<any> {
