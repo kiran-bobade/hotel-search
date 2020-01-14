@@ -13,6 +13,7 @@ import { LocationService } from '../services/location.service';
 import { Router } from '@angular/router';
 import { Location } from '../models/location';
 import { SearchHistoryService } from '../services/search-history.service';
+import { NgbDateFormatterPipe } from '../utils/date-formatter.pipe';
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
@@ -22,7 +23,7 @@ describe('SearchFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [NgbModule, RouterTestingModule, FontAwesomeModule,
         FormsModule, FlexLayoutModule, HttpClientTestingModule],
-      declarations: [SearchFormComponent, MustHaveDiffDirective],
+      declarations: [SearchFormComponent, MustHaveDiffDirective, NgbDateFormatterPipe],
       providers: []
     })
       .compileComponents();

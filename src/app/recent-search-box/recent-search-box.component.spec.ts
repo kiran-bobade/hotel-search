@@ -4,6 +4,7 @@ import { RecentSearchBoxComponent } from './recent-search-box.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchHistoryService } from '../services/search-history.service';
+import { NgbDateFormatterPipe } from '../utils/date-formatter.pipe';
 
 describe('RecentSearchBoxComponent', () => {
   let component: RecentSearchBoxComponent;
@@ -12,7 +13,7 @@ describe('RecentSearchBoxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FontAwesomeModule, RouterTestingModule],
-      declarations: [RecentSearchBoxComponent],
+      declarations: [RecentSearchBoxComponent, NgbDateFormatterPipe],
       providers: [SearchHistoryService]
     })
       .compileComponents();

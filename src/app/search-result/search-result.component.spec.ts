@@ -12,6 +12,7 @@ import { ListingItemComponent } from '../listing-item/listing-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RatingComponent } from '../rating/rating.component';
 import { ThousandSeparatorPipe } from '../utils/thousand-separator.pipe';
+import { NgbDateFormatterPipe } from '../utils/date-formatter.pipe';
 
 describe('SearchResultComponent', () => {
   let component: SearchResultComponent;
@@ -23,7 +24,7 @@ describe('SearchResultComponent', () => {
         FormsModule, FlexLayoutModule, NgbModule, FontAwesomeModule,
         RouterTestingModule, HttpClientTestingModule],
       declarations: [SearchResultComponent, RatingComponent, SearchFormComponent,
-        ListingItemComponent, MustHaveDiffDirective, ThousandSeparatorPipe]
+        ListingItemComponent, MustHaveDiffDirective, ThousandSeparatorPipe, NgbDateFormatterPipe]
     })
       .compileComponents();
   }));

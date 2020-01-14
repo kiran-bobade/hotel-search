@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbDateFormatterPipe } from '../utils/date-formatter.pipe';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -20,7 +21,7 @@ describe('SearchPageComponent', () => {
       imports: [FormsModule, FlexLayoutModule, FontAwesomeModule,
         NgbModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [SearchPageComponent, SearchFormComponent,
-        RecentSearchBoxComponent, MustHaveDiffDirective]
+        RecentSearchBoxComponent, MustHaveDiffDirective, NgbDateFormatterPipe]
     })
       .compileComponents();
   }));
